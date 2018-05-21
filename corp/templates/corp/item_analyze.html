@@ -1,0 +1,14 @@
+{% extends 'corp/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<a href="{{ next }}">
+  <button type="button" class="btn btn-warning">Назад</button>
+</a>
+<br>
+<h2 align="center">Результаты анализа</h2>
+<h5>{{ title }}</h4>
+<pre>
+{{ result }}
+</pre>
+{% endblock %}

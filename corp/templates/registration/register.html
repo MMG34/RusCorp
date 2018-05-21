@@ -1,0 +1,34 @@
+{% extends 'corp/base.html' %}
+{% load widget_tweaks %}
+
+{% block login %}
+    <div class="container">
+         <form role="form" method="post">
+            {% csrf_token %}
+             <div>
+                 <label class="control-label">{{ form.username.label }} </label>
+                 <label class="text-danger"> {{ form.username.errors }} </label>
+                 {{ form.username | add_class:"form-control" }}
+             </div>
+             <div>
+                 <label class="control-label">{{ form.email.label }} </label>
+                 <label class="text-danger"> {{ form.email.errors }} </label>
+                 {{ form.email | add_class:"form-control" }}
+             </div>
+             <div>
+                 <label class="control-label">{{ form.password1.label }} </label>
+                 <label class="text-danger"> {{ form.password1.errors }} </label>
+                 {{ form.password1 | add_class:"form-control"}}</div>
+             <div>
+                 <label class="control-label">{{ form.password2.label }} </label>
+                 <label class="text-danger"> {{ form.password2.errors }} </label>
+                 {{ form.password2 | add_class:"form-control"}}
+             </div>
+             <div>
+                 <br>
+                 <button class="btn btn-primary btn-lg btn-block" type="submit">Зарегистрироваться</button>
+                 <br>
+             </div>
+         </form>
+    </div>
+{% endblock login %}

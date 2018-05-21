@@ -1,0 +1,14 @@
+{% extends 'corp/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<a href="{{ next }}">
+  <button type="button" class="btn btn-warning">Назад</button>
+</a>
+<br>
+<br>
+<h4>{{ title }}</h4>
+<!-- <pre> -->
+{{ text|linebreaks }}
+<!-- </pre> -->
+{% endblock %}

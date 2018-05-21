@@ -1,0 +1,14 @@
+{% extends 'corp/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <h2>Новый текст</h2>
+    <form method="POST" enctype="multipart/form-data" class="post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">Сохранить</button>
+          <a href="{% url 'header_content' id_corp=id_corp %}" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+{% endblock %}

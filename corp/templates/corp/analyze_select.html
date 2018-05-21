@@ -1,0 +1,35 @@
+{% extends 'corp/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<a href="{{ next }}">
+  <button type="button" class="btn btn-warning">Назад</button>
+</a>
+<br>
+<h2 align="left">Поиск ключевых слов</h2>
+
+<form method="post">
+  <ul id="radio-list">
+    <li>
+    <input type="radio" value="name" id="rb-1" name="extract" CHECKED>
+    <label for="rb-1">Экстрактор имён</label>
+  </li>
+  <li>
+    <input type="radio" value="location" id="rb-2" name="extract">
+    <label for="rb-2">Экстрактор местоположений</label>
+  </li>
+  <li>
+    <input type="radio" value="date" id="rb-3" name="extract">
+    <label for="rb-3">Экстрактор дат</label>
+  </li>
+  <li>
+    <input type="radio" value="money" id="rb-4" name="extract">
+    <label for="rb-4">Экстрактор денежных сумм</label>
+  </li>
+  </ul>
+  <a href="{% url 'analyze' id_item=id_item %}">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-success" value="Запуск анализа"></input>
+  </a>
+</form>
+{% endblock %}

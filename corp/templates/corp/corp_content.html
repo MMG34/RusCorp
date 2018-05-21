@@ -1,0 +1,35 @@
+{% extends 'corp/base.html' %}
+
+{% block content %}
+  <h2 align="center">Список корпусов</h2>
+  <br>
+  <a href="{% url 'header_create' %}">
+    <button type="button" class="btn btn-primary">Создать</button>
+  </a>
+  {% if headers %}
+  <table class="table table-hover">
+    <tr>
+      <th class="text-center">Название корпуса</th>
+      <th class="text-center">Тип корпуса</th>
+      <th class="text-center">Дата создания</th>
+      {% if user.is_superuser %}
+      <th class="text-center"></th>
+      {% endif %}
+    </tr>
+    {% for header in headers %}
+    <tr>
+      <td class="text-center"><a href="header/{{ header.id_corp }}">{{header.name}}</a></td>
+      <td class="text-center"><a href="header/{{ header.id_corp }}">{{header.type}}</a></td>
+      <td class="text-center"><a href="header/{{ header.id_corp }}">{{header.created_date}}</a></td>
+      {% if user.is_superuser %}
+      <td class="text-center">
+        <a href="{% url 'header_delete' id_corp=header.id_corp %}" >
+          <button type="button" class="btn btn-danger">Удалить</button>
+        </a>
+      </td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+{% endblock %}

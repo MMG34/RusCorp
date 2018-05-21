@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/corp.css' %}">
+    <title>Проект корпус</title>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="page-header">
+        <a href="{% url 'home' %}">
+          <img class="header-logo" src = "/static/img/logo.png"/>
+          <div class="header-text">
+            <h1>Проект корпус</h1>
+          </div>
+        </a>
+      </div>
+      <br>
+
+      {% if user.is_authenticated %}
+          <div class="active"><a href="{% url 'logout' %}?next=/">Выход ({{ user.username }})</a></div>
+      {% else %}
+          <div class="active"><a href="{% url 'login' %}?next=/content/">Вход</a></div>
+          <div class="active"><a href="{% url 'register' %}?next=/content/">Регистрация</a></div>
+      {% endif %}
+
+      <br>
+      <div>
+            {% if user.is_authenticated %} {% block content %}{% endblock %} {% endif %}
+            {% block login %} {% endblock %}
+      </div>
+      <div class="footer">
+          <p>&copy; {% now 'Y' %} Волгоградский государственный университет </p>
+      </div>
+    </div> <!-- /container -->
+  </body>
+</html>
