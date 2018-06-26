@@ -7,14 +7,6 @@
   </div>
   {% endif %}
 
-  <!-- {% if next %}
-      {% if user.is_authenticated %}
-      <p>Нет доступа для просмотра данной страницы</p>
-      {% else %}
-      <p>Пожалуйста авторизуйтесь для просмотра данной страницы</p>
-      {% endif %}
-  {% endif %} -->
-
   <form method="post" action="{% url 'login' %}">
   {% csrf_token %}
   <table>
@@ -32,6 +24,5 @@
   <input type="hidden" name="next" value="{{ next }}" />
   </form>
 
-  {# Assumes you setup the password_reset view in your URLconf #}
   <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
 {% endblock %}

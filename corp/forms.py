@@ -1,11 +1,9 @@
-from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from django import forms #Формы Django
+from django.contrib.auth.forms import UserCreationForm #Форма создания пользователя
+from django.contrib.auth.models import User #Модель пользователя Django
 from .models import Header, Item
 
 class RegisterForm(UserCreationForm):
-    # first_name = forms.CharField(max_length=30, required=False, help_text='Необязательно.')
-    # last_name = forms.CharField(max_length=30, required=False, help_text='Необязательно.')
     email = forms.EmailField(max_length=254, help_text='Обязательно. Укажите действущий email адрес.')
 
     class Meta:
@@ -22,4 +20,3 @@ class ItemForm(forms.ModelForm):
         model = Item
         fields = ('title', 'author', 'theme', 'date', 'file')
         widgets = { 'date': forms.widgets.DateInput(attrs={'type': 'date'})}
-        # widgets = { 'date': forms.SelectDateWidget}
